@@ -28,6 +28,7 @@ def place_order(request, total=0, quantity=0):
     
     if request.method == 'POST':
         form = OderForm(request.POST)
+        
         if form.is_valid():
             # Store all the billing information onside order table
             data = Order()
