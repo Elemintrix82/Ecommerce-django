@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
@@ -5,10 +6,15 @@ from carts.models import CartItem
 from orders.forms import OderForm
 from orders.models import Order
 import datetime
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 
-def payements(request):
+
+@csrf_protect
+def payements(request):  
+    body = json.loads(request.body)
+    print(body)
     return render(request, "orders/payements.html")
 
 def place_order(request, total=0, quantity=0):
