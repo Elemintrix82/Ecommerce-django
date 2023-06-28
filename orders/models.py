@@ -57,13 +57,13 @@ class Order(models.Model):
     
     
 class OrderProduct(models.Model):
-    oder = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    variation = models.ForeignKey(Variation, on_delete=models.CASCADE)
-    color = models.CharField(max_length=60)
-    size = models.CharField(max_length=60)
+    variations = models.ManyToManyField(Variation, blank=True)
+    # color = models.CharField(max_length=60)
+    # size = models.CharField(max_length=60)
     quantity = models.IntegerField()
     product_price = models.FloatField()
     ordered = models.BooleanField(default=False)

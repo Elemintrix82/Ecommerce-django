@@ -8,7 +8,7 @@
     
     <!-- ============================ COMPONENT 1 ================================= -->
 
-    <h4 class="text-center mb-10">Review Your Order and Make Payement</h4>
+    <h4 class="text-center mb-10">Review Your Order and Make payment</h4>
     <div class="row">
         <aside class="col-lg-8">
             <div class="card">
@@ -25,7 +25,7 @@
                 </div>
               </div>
               <div class="card">
-                <h5 class="card-header">Payement Method</h5>
+                <h5 class="card-header">payment Method</h5>
                 <div class="card-body">
                   <p class="card-text">PayPal</p>
                 </div>
@@ -38,7 +38,7 @@
                         <tr class="small text-uppercase">
                           <th scope="col">Product</th>
                           <th scope="col" width="120">Quantity</th>
-                          <th scope="col" width="120">Price</th>
+                          <th scope="col" width="120">Price</th>0
                           
                         </tr>
                         </thead>
@@ -137,10 +137,11 @@
     }
 
     var amount = "{{ grand_total }}"
-    var url = "{% url 'payements' %}"
+    var url = "{% url 'payments' %}"
     var csrftoken = getCookie('csrftoken')
     var orderID = "{{ order.order_number }}";
-    var payement_method = 'PayPal'
+    var payment_method = 'PayPal'
+    var redirect_url = "{% url 'order_complete' %}"
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
 
@@ -180,20 +181,22 @@
                         body : JSON.stringify({
                             orderID: orderID,
                             transID : details.id,
-                            payement_method: payement_method,
+                            payment_method: payment_method,
                             status : details.status,
-                        })
+                        }),
                     })
-                   //.then(response => {
-                    //    if (!response.ok) {
-                    //    throw new Error('Network response was not ok');
-                    //    }
-                    //    return response.json();
-                    //})
-                    //.then(data => {
-                    //    // Process the data returned from the server
-                    //    console.log(data);
-                    //})
+                    .then((response) => {
+                        if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        // Process the data returned from the server
+                        console.log('Success: ', data);
+                        console.log('Transaction completed.');
+                        window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
+                    })
                 }
             });
         }
