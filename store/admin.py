@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Variation, ReviewRating, ProductGallery
+from .models import Boutique, Product, Variation, ReviewRating, ProductGallery
 import admin_thumbnails
 
 # Register your models here.
@@ -19,7 +19,11 @@ class VariationAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     list_filter = ('product', 'variation_category', 'variation_value')
 
+class BoutiqueAdmin(admin.ModelAdmin):
+    list_display = ('boutique_name', 'boutique_address')
 
+
+admin.site.register(Boutique, BoutiqueAdmin)
 admin.site.register(Product, PrductAdmin)
 admin.site.register(Variation, VariationAdmin)
 admin.site.register(ReviewRating)

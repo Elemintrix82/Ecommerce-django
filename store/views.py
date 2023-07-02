@@ -7,7 +7,7 @@ from django.db.models import Q
 from orders.models import OrderProduct
 from store.forms import ReviewForm
 
-from store.models import Product, ProductGallery, ReviewRating
+from store.models import Boutique, Product, ProductGallery, ReviewRating
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.contrib import messages
@@ -61,8 +61,18 @@ def product_detail(request, category_slug, product_slug):
     # Get the reviews
     reviews = ReviewRating.objects.filter(product_id=single_product.id, status=True)
     
-    # get the product gallery
+    # Get the product gallery
     product_gallery = ProductGallery.objects.filter(product_id=single_product.id)
+    
+   # Récupérer la boutique liée au produit
+    boutique = single_product.boutiques.first()  # Récupère la première boutique liée au produit
+    
+    if single_product.variation_set.colors is None:
+        print(single_product.variation_set.colors)
+        print("Nooooooooooooooooooooo")
+    else:
+        print(single_product.variation_set.colors)
+        print("Vraiiiiiiiiiiiiiiiii")
     
     context = {
         'single_product': single_product,
@@ -70,6 +80,7 @@ def product_detail(request, category_slug, product_slug):
         'orderproduct': orderproduct,
         'reviews': reviews,
         'product_gallery': product_gallery,
+        'boutique': boutique,
     }
     
     return render(request, 'store/product_detail.html', context)
