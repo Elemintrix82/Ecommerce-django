@@ -156,18 +156,23 @@ def activate(request, uidb64, token):
         return redirect('register')
     
     
-@login_required(login_url = 'login')
+@login_required(login_url='login')
 def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     orders_count = orders.count()
     
-    userprofile = UserProfile.objects.get(user_id=request.user.id)
+    try:
+        userprofile = UserProfile.objects.get(user_id=request.user.id)
+    except UserProfile.DoesNotExist:
+        # Créer un profil utilisateur pour l'utilisateur actuel
+        userprofile = UserProfile.objects.create(user=request.user)
     
     context = {
         'orders_count': orders_count,
         'userprofile': userprofile,
     }
     return render(request, 'accounts/dashboard.html', context)
+
 
 
 def forgotPassword(request):
@@ -308,3 +313,96 @@ def order_detail(request, order_id):
         'subtotal': subtotal,
     }
     return render(request, 'accounts/order_detail.html', context)
+
+
+###########################################
+
+"""
+import io
+from django.http import FileResponse
+from django.views import View
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.platypus import Table, TableStyle
+
+class DownloadInvoiceView(View):
+    def get(self, request, order_id):
+        order_detail = OrderProduct.objects.filter(order__order_number=order_id)
+        order = Order.objects.get(order_number=order_id)
+        subtotal = 0
+        for item in order_detail:
+            subtotal += item.product_price * item.quantity
+
+        # Create a file-like buffer to receive PDF data
+        buffer = io.BytesIO()
+
+        # Create the PDF object using the buffer as its "file"
+        p = canvas.Canvas(buffer, pagesize=letter)
+
+        # Draw things on the PDF. Here's where the PDF generation happens.
+        # You can use the ReportLab canvas methods to add text, images, tables, etc.
+        # Refer to the ReportLab documentation for more details: https://www.reportlab.com/docs/reportlab-userguide.pdf
+
+        # Set the font and size
+        p.setFont("Helvetica", 12)
+
+        # Draw the image
+        logo_path = r"ecommerce\static\images\logo.png"  # Replace this with the actual path to your image
+        p.drawImage(logo_path, 100, 750, width=1.5*inch, height=0.5*inch)
+
+        # Write the invoice content
+        p.drawString(100, 750, f"Invoice for Order {order.order_number}")
+        p.drawString(100, 700, f"Customer: {order.full_name}")
+        p.drawString(100, 680, f"Address: {order.full_address}, {order.city}, {order.state}, {order.country}")
+        p.drawString(100, 660, f"Email: {order.email}")
+
+        # Create the data for the table
+        table_data = [['Product', 'Quantity', 'Price']]
+        for item in order_detail:
+            table_data.append([item.product.product_name, str(item.quantity), str(item.product.price)])
+
+        # Define the table style
+        table_style = TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), 'grey'),  # Background color for the header row
+            ('TEXTCOLOR', (0, 0), (-1, 0), 'white'),  # Text color for the header row
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Font name for the header row
+            ('FONTSIZE', (0, 0), (-1, 0), 12),  # Font size for the header row
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),  # Bottom padding for the header row
+            ('BACKGROUND', (0, 1), (-1, -1), 'beige'),  # Background color for the data rows
+            ('TEXTCOLOR', (0, 1), (-1, -1), 'black'),  # Text color for the data rows
+            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),  # Font name for the data rows
+            ('FONTSIZE', (0, 1), (-1, -1), 10),  # Font size for the data rows
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Alignment for all cells
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Vertical alignment for all cells
+            ('LINEABOVE', (0, 0), (-1, -1), 1, 'black'),  # Line above for all cells
+            ('LINEBELOW', (0, 0), (-1, -1), 1, 'black'),  # Line below for all cells
+            ('BOX', (0, 0), (-1, -1), 1, 'black'),  # Box around the table
+        ])
+
+        # Create the table object
+        table = Table(table_data)
+
+        # Apply the table style
+        table.setStyle(table_style)
+
+        # Draw the table on the canvas
+        table.wrapOn(p, 400, 200)  # Set the table width and height
+        table.drawOn(p, 100, 550)  # Set the table position
+
+        # Calculate the position for the total section
+        y = 500 - (len(order_detail) * 20)  # Adjust the y-position based on the number of products
+
+        p.drawString(100, y - 40, f"Sub Total: {subtotal} FCFA")
+        p.drawString(100, y - 60, f"Tax: {order.tax} FCFA")
+        p.drawString(100, y - 80, f"Grand Total: {order.order_total} FCFA")
+
+        # Close the PDF object cleanly and we're done
+        p.showPage()
+        p.save()
+
+        # FileResponse sets the Content-Disposition header so that browsers present the option to save the file
+        buffer.seek(0)
+        return FileResponse(buffer, as_attachment=True, filename=f"{order_id}.pdf")
+
+"""

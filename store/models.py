@@ -20,6 +20,7 @@ class Product(models.Model):
     category            = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_date        = models.DateTimeField(auto_now=True)
     modified_date       = models.DateTimeField(auto_now=True)
+    boutiques = models.ManyToManyField('Boutique', related_name='categories')
     
     def get_url(self):
         return reverse('product_detail', args=[self.category.slug, self.slug])
@@ -94,3 +95,12 @@ class ProductGallery(models.Model):
     class Meta:
         verbose_name  = 'productgallery'
         verbose_name_plural  = 'product gallery'
+        
+
+class Boutique(models.Model):
+    boutique_name = models.CharField(max_length=100)
+    boutique_address = models.CharField(max_length=255)
+    boutique_logo = models.ImageField(upload_to='photos/boutiques/', blank=True)
+
+    def __str__(self):
+        return self.boutique_name

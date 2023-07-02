@@ -20,6 +20,10 @@ class MyAccountManager(BaseUserManager):
         
         user.set_password(password)
         user.save(using=self._db)
+        
+        # Créer un profil utilisateur pour le nouvel utilisateur
+        UserProfile.objects.create(user=user)
+        
         return user
     
     def create_superuser(self, first_name, last_name, email, username, password):

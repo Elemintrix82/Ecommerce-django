@@ -48,8 +48,15 @@
     </div> 
     
     <p style="text-align:justify">{{single_product.description}}</p>
+
+    {% if boutique %}
+        <h4>Shop: {{ boutique.boutique_name }}</h4>
+        <p>Address: {{ boutique.boutique_address }}</p>
+    {% endif %}
     
-    
+
+
+    {% if single_product.variation_set.colors and single_product.variation_set.sizes %}
     <hr>
         <div class="row">
             <div class="item-option-select">
@@ -73,6 +80,7 @@
                 </select>
             </div>
         </div> <!-- row.// -->
+    {% endif %}
         <hr>
         {% if single_product.stock <= 0 %}
             <h5 class="text-danger">Rupture de Stock</h5>
