@@ -1,0 +1,1017 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-17 01:07+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\accounts\admin.py:24 .\accounts\models.py:83
+#: .\templates\accounts\edit_profile.html:52
+msgid "Profile Picture"
+msgstr "Image de profile"
+
+#: .\accounts\admin.py:31
+msgid "Account"
+msgstr "Compte"
+
+#: .\accounts\admin.py:32
+msgid "Accounts"
+msgstr "Comptes"
+
+#: .\accounts\admin.py:33
+msgid "User profile"
+msgstr "Profil de l'utilisateur"
+
+#: .\accounts\admin.py:34
+msgid "User profiles"
+msgstr "Profils utilisateurs"
+
+#: .\accounts\apps.py:8
+msgid "accounts"
+msgstr "Comptes"
+
+#: .\accounts\models.py:10
+msgid "User must have an email address"
+msgstr "L'utilisateur doit avoir une adresse e-mail"
+
+#: .\accounts\models.py:13
+msgid "User must have a username"
+msgstr "L'utilisateur doit avoir un nom d'utilisateur"
+
+#: .\accounts\models.py:46 .\orders\models.py:32
+#: .\templates\accounts\edit_profile.html:38 .\templates\store\checkout.html:22
+msgid "First Name"
+msgstr "Nom"
+
+#: .\accounts\models.py:47 .\orders\models.py:33
+#: .\templates\accounts\edit_profile.html:42 .\templates\store\checkout.html:26
+msgid "Last Name"
+msgstr "Prénom"
+
+#: .\accounts\models.py:48
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\accounts\models.py:49 .\orders\models.py:35
+#: .\templates\store\checkout.html:32
+msgid "Email"
+msgstr "Email"
+
+#: .\accounts\models.py:50 .\templates\accounts\edit_profile.html:48
+#: .\templates\store\checkout.html:36
+msgid "Phone Number"
+msgstr "Numéro de téléphone"
+
+#: .\accounts\models.py:53
+msgid "Date Joined"
+msgstr "Date d'adhésion"
+
+#: .\accounts\models.py:54
+msgid "Last Login"
+msgstr "Dernière connexion"
+
+#: .\accounts\models.py:55
+msgid "Is Admin"
+msgstr "Est administrateur"
+
+#: .\accounts\models.py:56
+msgid "Is Staff"
+msgstr "Est le personnel"
+
+#: .\accounts\models.py:57 .\carts\models.py:22 .\store\models.py:63
+msgid "Is Active"
+msgstr "Est actif"
+
+#: .\accounts\models.py:58
+msgid "Is Superadmin"
+msgstr "Est Superadmin"
+
+#: .\accounts\models.py:80 .\orders\models.py:10 .\orders\models.py:29
+#: .\orders\models.py:63 .\store\models.py:74
+msgid "User"
+msgstr "Utilisateur"
+
+#: .\accounts\models.py:81 .\orders\models.py:36
+#: .\templates\accounts\edit_profile.html:57
+msgid "Address Line 1"
+msgstr "Adresse 1"
+
+#: .\accounts\models.py:82 .\orders\models.py:37
+#: .\templates\accounts\edit_profile.html:61
+msgid "Address Line 2"
+msgstr "Adresse 2"
+
+#: .\accounts\models.py:84 .\orders\models.py:40
+#: .\templates\accounts\edit_profile.html:66 .\templates\store\checkout.html:52
+msgid "City"
+msgstr "Ville"
+
+#: .\accounts\models.py:85 .\orders\models.py:39
+#: .\templates\accounts\edit_profile.html:70 .\templates\store\checkout.html:56
+msgid "State"
+msgstr "État"
+
+#: .\accounts\models.py:86 .\orders\models.py:38
+#: .\templates\accounts\edit_profile.html:74 .\templates\store\checkout.html:60
+msgid "Country"
+msgstr "Pays"
+
+#: .\accounts\views.py:119
+msgid "You are now logged in."
+msgstr "Vous êtes maintenant connecté."
+
+#: .\accounts\views.py:131
+msgid "Invalid login credentials"
+msgstr "Authentification invalide"
+
+#: .\accounts\views.py:140
+msgid "You are logged out."
+msgstr "Vous êtes déconnecté."
+
+#: .\accounts\views.py:154
+msgid "Congratulation Your account is activated."
+msgstr "Félicitation Votre compte est activé."
+
+#: .\accounts\views.py:157
+msgid "Invalid activation link."
+msgstr "Lien d'activation invalide."
+
+#: .\accounts\views.py:201
+msgid "Password reset email has been sent to your email address."
+msgstr ""
+"Un e-mail de réinitialisation du mot de passe a été envoyé à votre adresse e-"
+"mail."
+
+#: .\accounts\views.py:206
+msgid "Account does not exist."
+msgstr "Le compte n'existe pas."
+
+#: .\accounts\views.py:220
+msgid "Please reset your password"
+msgstr "Veuillez réinitialiser votre mot de passe"
+
+#: .\accounts\views.py:223
+msgid "This link has been expired!"
+msgstr "Ce lien a expiré !"
+
+#: .\accounts\views.py:236
+msgid "Password reset successful"
+msgstr "Réinitialisation du mot de passe réussie"
+
+#: .\accounts\views.py:239
+msgid "Password do not match."
+msgstr "Le mot de passe ne correspond pas."
+
+#: .\accounts\views.py:263
+msgid "Your profile has been updated."
+msgstr "Votre profil a été mis a jour."
+
+#: .\accounts\views.py:292
+msgid "Password updated successfully."
+msgstr "Mot de passe mis à jour avec succès."
+
+#: .\accounts\views.py:295
+msgid "Please enter valid current password."
+msgstr "Veuillez saisir un mot de passe actuel valide."
+
+#: .\accounts\views.py:298
+msgid "Please does not match."
+msgstr "S'il vous plaît, sa ne correspond pas."
+
+#: .\carts\admin.py:15
+msgid "Cart"
+msgstr "Paniers"
+
+#: .\carts\admin.py:16
+msgid "Carts"
+msgstr "Paniers"
+
+#: .\carts\admin.py:17
+msgid "Cart Item"
+msgstr "Élément de panier"
+
+#: .\carts\admin.py:18
+msgid "Cart Items"
+msgstr "Éléments de panier"
+
+#: .\carts\apps.py:7
+msgid "carts"
+msgstr "Paniers"
+
+#: .\carts\models.py:9
+msgid "Cart Id"
+msgstr "Identifiant du panier"
+
+#: .\carts\models.py:10
+msgid "Data Added"
+msgstr "Données ajoutées"
+
+#: .\carts\models.py:17
+msgid "user"
+msgstr "utilisateur"
+
+#: .\carts\models.py:18 .\orders\models.py:64 .\store\admin.py:41
+#: .\store\models.py:60 .\store\models.py:73 .\store\models.py:88
+#: .\templates\orders\payments.html:40 .\templates\store\cart.html:26
+#: .\templates\store\checkout.html:82
+msgid "Product"
+msgstr "Produit"
+
+#: .\carts\models.py:19 .\orders\models.py:65 .\store\admin.py:44
+msgid "Variations"
+msgstr "Variantes"
+
+#: .\carts\models.py:20
+msgid "cart"
+msgstr "Panier"
+
+#: .\carts\models.py:21
+#, fuzzy
+#| msgid "Quantity"
+msgid "quantity"
+msgstr "Quantité"
+
+#: .\category\admin.py:13 .\store\models.py:20
+msgid "Category"
+msgstr "Catégorie"
+
+#: .\category\admin.py:14 .\templates\store\store.html:31
+msgid "Categories"
+msgstr "Catégories"
+
+#: .\category\apps.py:7 .\category\models.py:15
+msgid "category"
+msgstr "Catégorie"
+
+#: .\category\models.py:9
+msgid "Category Name"
+msgstr "Nom des catégories"
+
+#: .\category\models.py:10 .\store\models.py:14
+msgid "Slug"
+msgstr "Slug"
+
+#: .\category\models.py:11 .\store\models.py:15
+msgid "Description"
+msgstr "Description"
+
+#: .\category\models.py:12
+msgid "Category Image"
+msgstr "Image de la Catégorie"
+
+#: .\category\models.py:16
+#, fuzzy
+#| msgid "Categories"
+msgid "categories"
+msgstr "Catégories"
+
+#: .\ecommerce\settings.py:127
+msgid "Francais"
+msgstr "Francais"
+
+#: .\ecommerce\settings.py:128
+msgid "English"
+msgstr "Anglais"
+
+#: .\ecommerce\urls.py:39 .\ecommerce\urls.py:40
+msgid "MSonline administration"
+msgstr "Administration MSonline"
+
+#: .\ecommerce\urls.py:41
+msgid "MSonline Dashboard"
+msgstr "Tableau de bord MSonline"
+
+#: .\orders\admin.py:29 .\orders\models.py:30 .\orders\models.py:62
+msgid "Payment"
+msgstr "Paiement"
+
+#: .\orders\admin.py:30
+msgid "Payments"
+msgstr "Paiements"
+
+#: .\orders\admin.py:31 .\orders\models.py:61
+#: .\templates\accounts\my_orders.html:26
+#: .\templates\accounts\order_detail.html:40
+#: .\templates\orders\order_complete.html:50
+msgid "Order"
+msgstr "Commande"
+
+#: .\orders\admin.py:32
+msgid "Orders"
+msgstr "Commandes"
+
+#: .\orders\admin.py:33
+msgid "Order Product"
+msgstr "Produit commendé"
+
+#: .\orders\admin.py:34
+msgid "Order Products"
+msgstr "Produits commendé"
+
+#: .\orders\apps.py:8
+#, fuzzy
+#| msgid "Orders"
+msgid "orders"
+msgstr "Commandes"
+
+#: .\orders\models.py:11
+msgid "Payment ID"
+msgstr "ID de paiement"
+
+#: .\orders\models.py:12
+msgid "Payment Method"
+msgstr "mode de paiement"
+
+#: .\orders\models.py:13
+msgid "Amount Paid"
+msgstr "Le montant payé"
+
+#: .\orders\models.py:14 .\orders\models.py:44 .\store\models.py:79
+#: .\templates\accounts\order_detail.html:43
+#: .\templates\orders\order_complete.html:53
+msgid "Status"
+msgstr "Statut"
+
+#: .\orders\models.py:15 .\orders\models.py:47 .\orders\models.py:71
+#: .\store\models.py:80
+msgid "Created At"
+msgstr "Créé à"
+
+#: .\orders\models.py:23
+msgid "New"
+msgstr "Nouveau"
+
+#: .\orders\models.py:24
+msgid "Accepted"
+msgstr "Accepté"
+
+#: .\orders\models.py:25
+msgid "Completed"
+msgstr "Complété"
+
+#: .\orders\models.py:26
+msgid "Cancelled"
+msgstr "Annulé"
+
+#: .\orders\models.py:31 .\templates\orders\order_recieved_email.html:8
+msgid "Order Number"
+msgstr "Numéro de commande"
+
+#: .\orders\models.py:34 .\templates\accounts\my_orders.html:28
+msgid "Phone"
+msgstr "Téléphone"
+
+#: .\orders\models.py:41 .\templates\orders\payments.html:24
+#: .\templates\store\checkout.html:65
+msgid "Order Note"
+msgstr "Note de commande"
+
+#: .\orders\models.py:42 .\templates\accounts\my_orders.html:29
+msgid "Order Total"
+msgstr "Total de la commande"
+
+#: .\orders\models.py:43 .\templates\accounts\order_detail.html:81
+#: .\templates\orders\order_complete.html:91 .\templates\store\cart.html:97
+msgid "Tax"
+msgstr "Tax"
+
+#: .\orders\models.py:45 .\store\models.py:78
+msgid "IP"
+msgstr "IP"
+
+#: .\orders\models.py:46
+msgid "Is Ordered"
+msgstr "Est commandé"
+
+#: .\orders\models.py:48 .\orders\models.py:72 .\store\models.py:81
+msgid "Updated At"
+msgstr "Mis à jour à"
+
+#: .\orders\models.py:68 .\templates\orders\payments.html:41
+#: .\templates\store\cart.html:27 .\templates\store\checkout.html:83
+msgid "Quantity"
+msgstr "Quantité"
+
+#: .\orders\models.py:69
+msgid "Product Price"
+msgstr "Prix ​​du produit"
+
+#: .\orders\models.py:70
+msgid "Ordered"
+msgstr "Commandé"
+
+#: .\orders\views.py:72
+msgid "Thank you for your order!"
+msgstr "Nous vous remercions de votre commande!"
+
+#: .\store\admin.py:39 .\templates\store\product_detail.html:54
+msgid "Shop"
+msgstr "Boutique"
+
+#: .\store\admin.py:40
+msgid "Shops"
+msgstr "Boutiques"
+
+#: .\store\admin.py:42 .\templates\accounts\order_detail.html:53
+#: .\templates\orders\order_complete.html:63
+msgid "Products"
+msgstr "Produits"
+
+#: .\store\admin.py:43
+msgid "Variation"
+msgstr "Variation"
+
+#: .\store\admin.py:45
+msgid "Review Rating"
+msgstr "Note d'examen"
+
+#: .\store\admin.py:46
+msgid "Reviews Rating"
+msgstr "Notes d'examen"
+
+#: .\store\admin.py:47 .\store\models.py:95
+msgid "Product Gallery"
+msgstr "Galerie de produit"
+
+#: .\store\admin.py:48
+msgid "Products Gallery"
+msgstr "Galerie de produits"
+
+#: .\store\apps.py:7
+msgid "store"
+msgstr "Magasin"
+
+#: .\store\models.py:13
+msgid "Product Name"
+msgstr "Nom du Produit"
+
+#: .\store\models.py:16 .\templates\orders\payments.html:42
+#: .\templates\store\cart.html:28 .\templates\store\checkout.html:84
+msgid "Price"
+msgstr "Prix"
+
+#: .\store\models.py:17
+msgid "Images"
+msgstr "Images"
+
+#: .\store\models.py:18
+msgid "Stock"
+msgstr "Stock"
+
+#: .\store\models.py:19
+msgid "Is Available"
+msgstr "Est disponible"
+
+#: .\store\models.py:21 .\store\models.py:64
+msgid "Created Date"
+msgstr "Date de création"
+
+#: .\store\models.py:22
+msgid "Modified Date"
+msgstr "Date modifiée"
+
+#: .\store\models.py:23
+msgid "Boutiques"
+msgstr "Boutiques"
+
+#: .\store\models.py:55
+msgid "color"
+msgstr "couleur"
+
+#: .\store\models.py:56
+msgid "size"
+msgstr "taille"
+
+#: .\store\models.py:61
+msgid "Variation Category"
+msgstr "Catégorie de variation"
+
+#: .\store\models.py:62
+msgid "Variation Value"
+msgstr "Valeur de variation"
+
+#: .\store\models.py:75
+msgid "Subject"
+msgstr "Sujet"
+
+#: .\store\models.py:76 .\templates\store\product_detail.html:128
+msgid "Review"
+msgstr "Avis"
+
+#: .\store\models.py:77
+msgid "Rating"
+msgstr "Notation"
+
+#: .\store\models.py:89
+msgid "Image"
+msgstr "Image"
+
+#: .\store\models.py:96
+msgid "Product Galleries"
+msgstr "Galeries de produits"
+
+#: .\store\models.py:100
+msgid "Boutique Name"
+msgstr "Nom de la boutique"
+
+#: .\store\models.py:101
+msgid "Boutique Address"
+msgstr "adresse de facturation"
+
+#: .\store\models.py:102
+msgid "Boutique Logo"
+msgstr "Logo de la boutique"
+
+#: .\store\views.py:168
+msgid "Thank you! Your review has been updates."
+msgstr "Merci! Votre avis a été mis à jour."
+
+#: .\store\views.py:182
+msgid "Thank you! Your review has been submitted."
+msgstr "Merci! Votre avis a été soumis."
+
+#: .\templates\accounts\account_verication_email.html:5
+#: .\templates\accounts\reset_password_email.html:4
+#: .\templates\orders\order_recieved_email.html:4
+msgid "Hi"
+msgstr "Salut"
+
+#: .\templates\accounts\account_verication_email.html:7
+msgid "Please click on below link to confirm your registration"
+msgstr ""
+"Veuillez cliquer sur le lien ci-dessous pour confirmer votre inscription"
+
+#: .\templates\accounts\account_verication_email.html:10
+#: .\templates\accounts\reset_password_email.html:9
+msgid "If you think it's not you, please ignore this email."
+msgstr "Si vous pensez que ce n'est pas vous, veuillez ignorer cet e-mail."
+
+#: .\templates\accounts\change_password.html:17
+msgid "Change Your Password"
+msgstr "Changer votre mot de passe"
+
+#: .\templates\accounts\change_password.html:27
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: .\templates\accounts\change_password.html:31
+msgid "Creat new password"
+msgstr "Créer un nouveau mot de passe"
+
+#: .\templates\accounts\change_password.html:35
+msgid "Confirm new password"
+msgstr "Confirmer le nouveau mot de passe"
+
+#: .\templates\accounts\change_password.html:39
+#: .\templates\accounts\forgotPassword.html:28
+msgid "Submit"
+msgstr "Envoyer"
+
+#: .\templates\accounts\dashboard.html:17
+msgid "Logged in as"
+msgstr "Connecté en tant que"
+
+#: .\templates\accounts\dashboard.html:26
+msgid "Total Orders"
+msgstr "Commandes totales"
+
+#: .\templates\accounts\dashboard.html:28
+msgid "View Orders"
+msgstr "Afficher les commandes"
+
+#: .\templates\accounts\edit_profile.html:17
+msgid "Edit your profile"
+msgstr "Modifier votre profil"
+
+#: .\templates\accounts\edit_profile.html:78
+msgid "Save"
+msgstr "Enregistrer"
+
+#: .\templates\accounts\forgotPassword.html:15
+msgid "Forgot Password"
+msgstr "Mot de passe oublié"
+
+#: .\templates\accounts\forgotPassword.html:24
+msgid "Got a password? Login"
+msgstr "Vous avez un mot de passe ? Connexion"
+
+#: .\templates\accounts\forgotPassword.html:34
+#: .\templates\accounts\login.html:46
+#: .\templates\accounts\resetPassword.html:32
+msgid "Don't have account?"
+msgstr "Vous n'avez pas de compte ?"
+
+#: .\templates\accounts\forgotPassword.html:34
+#: .\templates\accounts\login.html:46 .\templates\accounts\register.html:14
+#: .\templates\accounts\resetPassword.html:32
+msgid "Sign up"
+msgstr "S'inscrire"
+
+#: .\templates\accounts\login.html:15
+msgid ""
+"Thank you for registering with us. We have sent you a verification email to "
+"your email address"
+msgstr ""
+"Merci de vous être inscrit chez nous. Nous vous avons envoyé un e-mail de "
+"vérification à votre adresse e-mail"
+
+#: .\templates\accounts\login.html:17
+msgid "Already verified?"
+msgstr "Déjà vérifié ?"
+
+#: .\templates\accounts\login.html:17 .\templates\accounts\login.html:40
+#: .\templates\accounts\resetPassword.html:26
+msgid "Login"
+msgstr "Connexion"
+
+#: .\templates\accounts\login.html:24 .\templates\includes\navbar.html:72
+msgid "Sign in"
+msgstr "S'identifier"
+
+#: .\templates\accounts\login.html:36
+msgid "Forgot password?"
+msgstr "Mot de passe oublié?"
+
+#: .\templates\accounts\my_orders.html:17
+msgid "Your order history"
+msgstr "Votre historique de commandes"
+
+#: .\templates\accounts\my_orders.html:27
+msgid "Billing Name"
+msgstr "Nom de facturation"
+
+#: .\templates\accounts\my_orders.html:30
+msgid "Date"
+msgstr "Date"
+
+#: .\templates\accounts\order_detail.html:25
+#: .\templates\orders\order_complete.html:35
+msgid "Invoiced To"
+msgstr "Facturé à"
+
+#: .\templates\accounts\order_detail.html:41
+#: .\templates\orders\order_complete.html:51
+msgid "Transaction ID"
+msgstr "identifiant de transaction"
+
+#: .\templates\accounts\order_detail.html:42
+#: .\templates\orders\order_complete.html:52
+msgid "Order Date"
+msgstr "Date de commande"
+
+#: .\templates\accounts\order_detail.html:54
+#: .\templates\orders\order_complete.html:64
+msgid "Qty"
+msgstr "Qté"
+
+#: .\templates\accounts\order_detail.html:55
+#: .\templates\orders\order_complete.html:65 .\templates\store\cart.html:101
+msgid "Total"
+msgstr "Totale"
+
+#: .\templates\accounts\order_detail.html:77
+#: .\templates\orders\order_complete.html:87
+msgid "Sub Total"
+msgstr "Sous-total"
+
+#: .\templates\accounts\order_detail.html:86
+#: .\templates\orders\order_complete.html:96
+msgid "Grand Total"
+msgstr "Totale général"
+
+#: .\templates\accounts\order_detail.html:94
+#: .\templates\orders\order_complete.html:104
+msgid "Thank you for shopping with us!"
+msgstr "Merci d'avoir éffectué les achats chez nous!"
+
+#: .\templates\accounts\register.html:20
+msgid "First name"
+msgstr "Nom"
+
+#: .\templates\accounts\register.html:24
+msgid "Last name"
+msgstr "Prénom"
+
+#: .\templates\accounts\register.html:31
+msgid "Email Address"
+msgstr "adresse Email"
+
+#: .\templates\accounts\register.html:35
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: .\templates\accounts\register.html:41
+msgid "Create password"
+msgstr "Créer le mot de passe"
+
+#: .\templates\accounts\register.html:45
+msgid "Repeat password"
+msgstr "Répéter le mot de passe"
+
+#: .\templates\accounts\register.html:50 .\templates\includes\navbar.html:73
+msgid "Register"
+msgstr "S'inscrire"
+
+#: .\templates\accounts\register.html:57
+msgid "Have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+#: .\templates\accounts\register.html:57
+msgid "Log In"
+msgstr "Connexion"
+
+#: .\templates\accounts\resetPassword.html:14
+msgid "Reset Password"
+msgstr "réinitialiser le mot de passe"
+
+#: .\templates\accounts\reset_password_email.html:6
+msgid "As requested, please click below link to reset your password."
+msgstr ""
+"Comme demandé, veuillez cliquer sur le lien ci-dessous pour réinitialiser "
+"votre mot de passe."
+
+#: .\templates\admin\base_site.html:13
+msgid "Welcome to the MSonline administrator interface"
+msgstr "Bienvenue dans l'interface administrateur de MSonline"
+
+#: .\templates\admin\base_site.html:33
+msgid "Administration website"
+msgstr "Site d'administration"
+
+#: .\templates\admin\base_site.html:48
+msgid "You don't have permission to view any apps"
+msgstr "Vous n'êtes pas autorisé à afficher les applications"
+
+#: .\templates\home.html:24
+msgid "See all"
+msgstr "Voir tout"
+
+#: .\templates\home.html:25
+msgid "Popular products"
+msgstr "Produits populaires"
+
+#: .\templates\includes\alerts.html:7
+msgid "Error"
+msgstr "Erreur"
+
+#: .\templates\includes\dashboard_sidebar.html:8
+#: .\templates\includes\navbar.html:81
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: .\templates\includes\dashboard_sidebar.html:9
+msgid "My Orders"
+msgstr "Mes commandes"
+
+#: .\templates\includes\dashboard_sidebar.html:10
+msgid "Edit Profile"
+msgstr "Modifier le profil"
+
+#: .\templates\includes\dashboard_sidebar.html:11
+msgid "Change Password"
+msgstr "Changer le mot de passe"
+
+#: .\templates\includes\dashboard_sidebar.html:17
+msgid "Dashboard Admin"
+msgstr "Tableau de bord administrateur"
+
+#: .\templates\includes\dashboard_sidebar.html:22
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: .\templates\includes\navbar.html:28
+msgid "All category "
+msgstr "Toutes les catégories"
+
+#: .\templates\includes\navbar.html:31 .\templates\store\store.html:38
+msgid "All Products"
+msgstr "Tous les produits"
+
+#: .\templates\includes\navbar.html:38
+msgid "Store"
+msgstr "Magasin"
+
+#: .\templates\includes\navbar.html:42
+msgid "Search"
+msgstr "Recherche"
+
+#: .\templates\includes\navbar.html:58
+msgid "Language"
+msgstr "Langue"
+
+#: .\templates\includes\navbar.html:70
+msgid "Welcome guest!"
+msgstr "Bienvenue invité !"
+
+#: .\templates\includes\navbar.html:79
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: .\templates\includes\navbar.html:82
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: .\templates\orders\order_complete.html:10
+msgid "Payment Successful"
+msgstr "Paiement réussi"
+
+#: .\templates\orders\order_complete.html:13
+msgid "Shop more"
+msgstr "Achetez plus"
+
+#: .\templates\orders\order_recieved_email.html:6
+msgid "YOUR ORDER HAS BEEN RECIEVED"
+msgstr "VOTRE COMMANDE A ÉTÉ REÇUE"
+
+#: .\templates\orders\payments.html:12
+msgid "Review Your Order and Make payment"
+msgstr "Vérifiez votre commande et effectuez le paiement"
+
+#: .\templates\orders\payments.html:16 .\templates\store\checkout.html:17
+msgid "Billing Address"
+msgstr "adresse de facturation"
+
+#: .\templates\orders\payments.html:29
+msgid "payment Method"
+msgstr "mode de paiement"
+
+#: .\templates\orders\payments.html:31
+msgid "PayPal"
+msgstr "PayPal"
+
+#: .\templates\orders\payments.html:35
+msgid "Review Product"
+msgstr "Tous les produits"
+
+#: .\templates\orders\payments.html:72 .\templates\store\cart.html:74
+#: .\templates\store\checkout.html:114
+msgid "each"
+msgstr "l'unité"
+
+#: .\templates\store\cart.html:13
+msgid "Your Shopping Cart is Empty"
+msgstr "Votre panier est vide"
+
+#: .\templates\store\cart.html:16 .\templates\store\cart.html:109
+#: .\templates\store\checkout.html:126
+msgid "Continue Shopping"
+msgstr "Continuer vos achats"
+
+#: .\templates\store\cart.html:78
+msgid "Are you sure you want to delete this item?"
+msgstr "Êtes-vous sûr de bien vouloir supprimer cet élément?"
+
+#: .\templates\store\cart.html:78
+msgid "Remove"
+msgstr "Retirer"
+
+#: .\templates\store\cart.html:93
+msgid "Total price"
+msgstr "Prix ​​total"
+
+#: .\templates\store\cart.html:108
+msgid "Checkouts"
+msgstr "Passé à la caisse"
+
+#: .\templates\store\checkout.html:42 .\templates\store\checkout.html:46
+msgid "Addresse Line"
+msgstr "Adresse"
+
+#: .\templates\store\checkout.html:125
+msgid "Place Order"
+msgstr "Passer la commande"
+
+#: .\templates\store\product_detail.html:42
+#: .\templates\store\product_detail.html:154
+msgid "reviews"
+msgstr "avis"
+
+#: .\templates\store\product_detail.html:55
+msgid "Address"
+msgstr "Adresse"
+
+#: .\templates\store\product_detail.html:64
+msgid "Choose Color"
+msgstr "Choisir la couleur"
+
+#: .\templates\store\product_detail.html:66
+#: .\templates\store\product_detail.html:77
+msgid "Select"
+msgstr "Sélectionner"
+
+#: .\templates\store\product_detail.html:75
+msgid "Select Size"
+msgstr "Sélectionner la taille"
+
+#: .\templates\store\product_detail.html:87
+msgid "Out of stock"
+msgstr "Rupture de stock"
+
+#: .\templates\store\product_detail.html:89
+msgid "Add to cart"
+msgstr "Ajouter au panier"
+
+#: .\templates\store\product_detail.html:106
+msgid "Write Your Reviews"
+msgstr "Rédigez vos avis"
+
+#: .\templates\store\product_detail.html:109
+msgid "How do you rate this product?"
+msgstr "Comment évaluez-vous ce produit ?"
+
+#: .\templates\store\product_detail.html:125
+msgid "Review Title"
+msgstr "Titre de l'avis"
+
+#: .\templates\store\product_detail.html:133
+msgid "Submit Review"
+msgstr "Poster le commentaire"
+
+#: .\templates\store\product_detail.html:135
+msgid "You must purchase this product to post a review."
+msgstr "Vous devez acheter ce produit pour publier un avis."
+
+#: .\templates\store\product_detail.html:138
+msgid "You must be logged in to post a review."
+msgstr "Vous devez être connecté pour publier un avis"
+
+#: .\templates\store\product_detail.html:138
+msgid "Login now"
+msgstr "Connecte-toi maintenant"
+
+#: .\templates\store\product_detail.html:146
+msgid "Customer Reviews"
+msgstr "Avis des clients"
+
+#: .\templates\store\store.html:11
+msgid "Search Result"
+msgstr "Résultat de la recherche"
+
+#: .\templates\store\store.html:13
+msgid "Our"
+msgstr "Notre"
+
+#: .\templates\store\store.html:129
+msgid "Items found"
+msgstr "Éléments trouvés"
+
+#: .\templates\store\store.html:158
+msgid "View Details"
+msgstr "Afficher les détails"
+
+#: .\templates\store\store.html:165
+msgid "No result found. Please try again."
+msgstr "Aucun résultat trouvé. Veuillez réessayer."
+
+#: .\templates\store\store.html:175 .\templates\store\store.html:177
+msgid "Previous"
+msgstr "Précédent"
+
+#: .\templates\store\store.html:189 .\templates\store\store.html:191
+msgid "Next"
+msgstr "Suivant"
+
+#~ msgid "Rupture de Stock"
+#~ msgstr "Rupture de Stock"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Vignette"
+
+#, fuzzy
+#~| msgid "Don't have account?"
+#~ msgid "Don't have account"
+#~ msgstr "Vous n'avez pas de compte ?"
+
+#, fuzzy
+#~| msgid "Addresse Line"
+#~ msgid "Address Line"
+#~ msgstr "Adresse"
+
+#, fuzzy
+#~| msgid "Change Password"
+#~ msgid "Creat New Password"
+#~ msgstr "Créer le mot de passe"
+
+#~ msgid "Confirm New Password"
+#~ msgstr "Confirmer le nouveau mot de passe"
+
+#, fuzzy
+#~ msgid "Result"
+#~ msgstr "Résultat"
+
+#, fuzzy
+#~ msgid "Our Store"
+#~ msgstr "Notre magasin"

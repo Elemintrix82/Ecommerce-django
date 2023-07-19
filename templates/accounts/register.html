@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
 
 {% block content %}
 
+{% language 'en' %}
+{% autoescape off %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
 
@@ -10,50 +14,50 @@
         <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
           <article class="card-body">
             {% include 'includes/alerts.html' %}
-            <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+            <header class="mb-4"><h4 class="card-title">{% translate "Sign up" %}</h4></header>
             <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
                 
                     <div class="form-row">
                         <div class="col form-group col-md-6">
-                            <label>First name</label>
+                            <label>{% translate "First name" %}</label>
                               {{ form.first_name }}
                         </div> <!-- form-group end.// -->
                         <div class="col form-group col-md-6">
-                            <label>Last name</label>
+                            <label>{% translate "Last name" %}</label>
                               {{ form.last_name }}
                         </div> <!-- form-group end.// -->
                     </div> <!-- form-row end.// -->
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label>Email Address</label>
+                          <label>{% translate "Email Address" %}</label>
                           {{ form.email }}
                         </div> <!-- form-group end.// -->
                         <div class="form-group col-md-6">
-                          <label>Phone number</la bel>
+                          <label>{% translate "Phone number" %}</la bel>
                           {{ form.phone_number }}
                         </div> <!-- form-group end.// -->
                     </div> <!-- form-row.// -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Create password</label>
+                            <label>{% translate "Create password" %}</label>
                             {{ form.password }}
                         </div> <!-- form-group end.// --> 
                         <div class="form-group col-md-6">
-                            <label>Repeat password</label>
+                            <label>{% translate "Repeat password" %}</label>
                             {{ form.confirm_password }}
                         </div> <!-- form-group end.// -->  
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                        <button type="submit" class="btn btn-primary btn-block"> {% translate "Register" %}  </button>
                     </div> <!-- form-group// -->      
                     {{ form.email.errors }}
                     {{ form.non_field_errors }}
                 </form>
             </article><!-- card-body.// -->
         </div> <!-- card .// -->
-        <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
+        <p class="text-center mt-4">{% translate "Have an account?" %} <a href="{% url 'login' %}">{% translate "Log In" %}</a></p>
         <br><br>
     <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
     
@@ -61,5 +65,7 @@
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
     
+{% endautoescape %}
+{% endlanguage %}
 
 {% endblock  %}

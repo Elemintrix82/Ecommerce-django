@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -13,55 +14,55 @@
         <aside class="col-lg-6">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title mb-4">Billing Address</h4>
+            <h4 class="card-title mb-4">{% translate "Billing Address" %}</h4>
             <form action="{% url 'place_order' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for=""> First Name </label>
+                        <label for=""> {% translate "First Name" %} </label>
                         <input type="text" name="first_name" class="form-control" required>
                     </div>
                     <div class="form-group col">
-                        <label for=""> Last Name </label>
+                        <label for=""> {% translate "Last Name" %} </label>
                         <input type="text" name="last_name" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for=""> Email </label>
+                        <label for=""> {% translate "Email" %} </label>
                         <input type="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group col">
-                        <label for=""> Phone Number </label>
+                        <label for=""> {% translate "Phone Number" %} </label>
                         <input type="text" name="phone" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for=""> Addresse Line 1 </label>
+                        <label for=""> {% translate "Addresse Line" %} 1 </label>
                         <input type="text" name="address_line_1" class="form-control" required>
                     </div>
                     <div class="form-group col">
-                        <label for=""> Addresse Line 2 </label>
+                        <label for=""> {% translate "Addresse Line" %} 2 </label>
                         <input type="text" name="address_line_2" class="form-control">
                     </div>
                 </div>  
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for=""> City </label>
+                        <label for=""> {% translate "City" %} </label>
                         <input type="text" name="city" class="form-control" required>
                     </div>
                     <div class="form-group col">
-                        <label for=""> State </label>
+                        <label for=""> {% translate "State" %} </label>
                         <input type="text" name="state" class="form-control" required>
                     </div>
                 <div class="form-group col">
-                    <label for=""> Country </label>
+                    <label for=""> {% translate "Country" %} </label>
                     <input type="text" name="country" class="form-control" required>
                 </div>
             </div>
                 <div class="form-row">
-                    <label for=""> Order Note </label>
+                    <label for=""> {% translate "Order Note" %} </label>
                     <textarea name="order_note" row="2" class="form-control"> </textarea>
                 </div>
                 
@@ -78,9 +79,9 @@
                 <table class="table table-borderless table-shopping-cart">
                     <thead class="text-muted">
                     <tr class="small text-uppercase">
-                      <th scope="col">Product</th>
-                      <th scope="col" width="120">Quantity</th>
-                      <th scope="col" width="120">Price</th>
+                      <th scope="col">{% translate "Product" %}</th>
+                      <th scope="col" width="120">{% translate "Quantity" %}</th>
+                      <th scope="col" width="120">{% translate "Price" %}</th>
                       
                     </tr>
                     </thead>
@@ -110,7 +111,7 @@
                         <td> 
                             <div class="price-wrap"> 
                                 <var class="price">{{ cart_item.sub_total }} FCFA</var> 
-                                <small class="text-muted"> {{ cart_item.product.price }} FCFA each </small> 
+                                <small class="text-muted"> {{ cart_item.product.price }} FCFA {% translate "each" %} </small> 
                             </div> <!-- price-wrap .// -->
                         </td>
                         
@@ -121,8 +122,8 @@
                     </table>
                 
                 
-                <button type="submit" name="submit" class="btn btn-primary btn-block"> Place Order </button>
-                <a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
+                <button type="submit" name="submit" class="btn btn-primary btn-block"> {% translate "Place Order" %} </button>
+                <a href="{% url 'store' %}" class="btn btn-light btn-block">{% translate "Continue Shopping" %}</a>
             </form>
             </div> <!-- card-body.// -->
             </div> <!-- card.// -->

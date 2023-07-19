@@ -1,16 +1,24 @@
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
 <aside class="col-md-3">
     <!--   SIDEBAR   -->
-    <ul class="list-group">
-        <a class="list-group-item {% if '/accounts/' == request.path %}active{% endif %}" href="{% url 'dashboard' %}"> Dashboard  </a>
-        <a class="list-group-item {% if '/my_orders/' in request.path %}active{% endif %}" href="{% url 'my_orders' %}"> My Orders </a>
-        <a class="list-group-item {% if '/edit_profile/' in request.path %}active{% endif %}" href="{% url 'edit_profile' %}"> Edit Profile </a>
-        <a class="list-group-item {% if '/change_password/' in request.path %}active{% endif %}" href="{% url 'change_password' %}"> Change Password </a>
-        {% if userprofile.user.is_admin %}
-            <a class="list-group-item active"  href="{% url 'admin:index' %}"> Dashboard Admin </a>
-        {% endif %}
-    
+    <ul class="list-group">    
+        <a class="list-group-item {% if '/'|add:LANGUAGE_CODE|add:'/accounts/' == request.path %}active{% endif %}" href="{% url 'dashboard' %}"> {% translate "Dashboard" %}  </a>
+        <a class="list-group-item {% if '/'|add:LANGUAGE_CODE|add:'/accounts/my_orders/' in request.path %}active{% endif %}" href="{% url 'my_orders' %}"> {% translate "My Orders" %} </a>
+        <a class="list-group-item {% if '/'|add:LANGUAGE_CODE|add:'/accounts/edit_profile/' in request.path %}active{% endif %}" href="{% url 'edit_profile' %}"> {% translate "Edit Profile" %} </a>
+        <a class="list-group-item {% if '/'|add:LANGUAGE_CODE|add:'/accounts/change_password/' in request.path %}active{% endif %}" href="{% url 'change_password' %}"> {% translate "Change Password" %} </a>
     </ul>
     <br>
-    <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 
+
+    <ul class="list-group">  
+        {% if userprofile.user.is_admin %}
+            <a class="list-group-item active"  href="{% url 'admin:index' %}"> {% translate "Dashboard Admin" %} </a>
+        {% endif %}
+    </ul> 
+    <br>
+
+    <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">{% translate "Log out" %}</span> </a> 
     <!--   SIDEBAR .//END   -->
 </aside>

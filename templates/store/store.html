@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -7,9 +8,9 @@
 <section class="section-pagetop bg">
     <div class="container">
         {% if 'search' in request.path %}
-            <h2 class="title-page">Search Result</h2>
+            <h2 class="title-page">  {% translate "Search Result" %}</h2>
         {% else %}
-            <h2 class="title-page">Our Store</h2>
+            <h2 class="title-page">{% translate "Our" %} Store </h2>
         {% endif %}
     </div> <!-- container //  -->
 </section>
@@ -27,14 +28,14 @@
             <header class="card-header">
                 <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
                     <i class="icon-control fa fa-chevron-down"></i>
-                    <h6 class="title">Categories</h6>
+                    <h6 class="title">{% translate "Categories" %}</h6>
                 </a>
             </header>
             <div class="filter-content collapse show" id="collapse_1" style="">
                 <div class="card-body">
                     
                     <ul class="list-menu">
-                        <li><a href="{% url 'store' %}"> All Products </a></li>
+                        <li><a href="{% url 'store' %}">{% translate "All Products" %}  </a></li>
                         {% for category in links  %}
                             <li><a href="{{ category.get_url }}">{{ category.category_name }}</a></li>
                         {% endfor %}
@@ -42,7 +43,7 @@
     
                 </div> <!-- card-body.// -->
             </div>
-        </article> <!-- filter-group  .// -->
+        {% comment %} </article> <!-- filter-group  .// -->
         <article class="filter-group">
             <header class="card-header">
                 <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
@@ -115,7 +116,7 @@
                     <button class="btn btn-block btn-primary">Apply</button>
                 </div><!-- card-body.// -->
             </div>
-        </article> <!-- filter-group .// -->
+        </article> <!-- filter-group .// --> {% endcomment %}
         
     </div> <!-- card.// -->
     
@@ -124,11 +125,16 @@
     
     <header class="border-bottom mb-4 pb-3">
             <div class="form-inline">
-                <span class="mr-md-auto"><b>{{ product_count }}</b> Articles trouvés </span>
+                <span class="mr-md-auto"><b>{{ product_count }}</b> {% translate "Items found" %}  </span>
                 
             </div>
     </header><!-- sect-heading -->
     
+    {% comment %} {% for product, translated_name in products %}
+    <!-- ... -->
+    <a href="{{ product.get_url }}" class="title">{{ translated_name }}</a>
+    <!-- ... -->
+    {% endfor %} {% endcomment %}
 
     <div class="row">
         {% if products %}
@@ -147,14 +153,14 @@
                             <span class="price">{{ product.price }} FCFA</span>
                         </div> <!-- price-wrap.// -->
                     </div>
-                    <a href="{{product.get_url }}" class="btn btn-block btn-primary">View Details</a>
+                    <a href="{{product.get_url }}" class="btn btn-block btn-primary">{% translate "View Details" %}</a>
                 </figcaption>
             </figure>
         </div> <!-- col.// -->
         {% endfor %}
         {% else %}
             <div> 
-                <h2> No result found. Please try again. </h2> 
+                <h2> {% translate "No result found. Please try again." %} </h2> 
             </div>
         {% endif %}
     </div> <!-- row end.// -->
@@ -164,9 +170,9 @@
     {% if products.has_other_pages %}
       <ul class="pagination">
         {% if products.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{products.previous_page_number}}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{products.previous_page_number}}">{% translate "Previous" %}</a></li>
         {% else %}
-            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#"> {% translate "Previous" %}</a></li>
         {% endif %}
 
         {% for i in products.paginator.page_range %}
@@ -178,9 +184,9 @@
         {% endfor %}
 
         {% if products.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{products.next_page_number}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{products.next_page_number}}">{% translate "Next" %}</a></li>
             {% else %}
-            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#">{% translate "Next" %}</a></li>
         {% endif %}
       </ul>
     {% endif %}

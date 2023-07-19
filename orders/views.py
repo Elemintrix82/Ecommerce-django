@@ -13,6 +13,7 @@ from store.models import Product
 # Envoir d'email de confirmation commande
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
+from django.utils.translation import gettext_lazy as _ 
 
 # Create your views here.
 
@@ -68,7 +69,7 @@ def payments(request):
     
     
     # Send order recieved email to customer
-    mail_subject = 'Thank you for your order!'
+    mail_subject = _('Thank you for your order!')
     message = render_to_string('orders/order_recieved_email.html', {
         "user": request.user,
         "order" : order,

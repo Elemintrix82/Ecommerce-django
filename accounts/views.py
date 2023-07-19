@@ -21,6 +21,8 @@ import requests
 
 from orders.models import Order, OrderProduct
 
+from django.utils.translation import gettext_lazy as _ 
+
 # Create your views here.
 
 def register(request):
@@ -114,7 +116,7 @@ def login(request):
             except:
                 pass
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
+            messages.success(request, _('You are now logged in.'))
             url = request.META.get('HTTP_REFERER')
             try:
                 query = requests.utils.urlparse(url).query
@@ -126,7 +128,7 @@ def login(request):
             except:
                 return redirect('dashboard')
         else:
-            messages.error(request, 'Invalide login credentials')
+            messages.error(request, _('Invalid login credentials'))
             return redirect('login')
         
     return render(request,'accounts/login.html')
@@ -135,7 +137,7 @@ def login(request):
 @login_required(login_url = 'login')
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You are logged out.')
+    messages.success(request, _('You are logged out.'))
     return redirect('login')
 
 
@@ -149,10 +151,10 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, 'Congratulation Your account is activated.')
+        messages.success(request, _('Congratulation Your account is activated.'))
         return redirect('login')
     else:
-        messages.error(request, 'Invalid activation link.')
+        messages.error(request, _('Invalid activation link.'))
         return redirect('register')
     
     
@@ -196,12 +198,12 @@ def forgotPassword(request):
             send_email = EmailMessage(mail_subject, message, settings.EMAIL_HOST_USER, to=[to_email])
             send_email.send()
             
-            messages.success(request, 'Password reset email has been sent to your email address.')
+            messages.success(request, _('Password reset email has been sent to your email address.'))
             
             return redirect('login')
             
         else:
-            messages.error(request, 'Account does not exist.')
+            messages.error(request, _('Account does not exist.'))
             return redirect('forgotPassword')
     return render(request, 'accounts/forgotPassword.html')
 
@@ -215,10 +217,10 @@ def resetpassword_validate(request, uidb64, token):
         
     if user is not None and default_token_generator.check_token(user, token):
         request.session['uid'] = uid
-        messages.success(request, 'Please reset your password')
+        messages.success(request, _('Please reset your password'))
         return redirect('resetPassword')
     else:
-        messages.error(request, 'This link has been expired!')
+        messages.error(request, _('This link has been expired!'))
         return redirect('login')
         
 def resetPassword(request):
@@ -231,10 +233,10 @@ def resetPassword(request):
             user = Account.objects.get(pk=uid)
             user.set_password(password)
             user.save()
-            messages.success(request, 'Password reset successful')
+            messages.success(request, _('Password reset successful'))
             return redirect('login')
         else:
-            messages.error(request, 'Password do not match.')
+            messages.error(request, _('Password do not match.'))
             return redirect('resetPassword')
     else:
         return render(request, 'accounts/resetPassword.html')
@@ -258,7 +260,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile has been updated.')
+            messages.success(request, _('Your profile has been updated.'))
             return redirect('edit_profile')
     else:
         user_form = UserForm(instance=request.user)
@@ -287,13 +289,13 @@ def change_password(request):
                 user.set_password(new_password)
                 user.save()
                 # auth.logout(request)
-                messages.success(request, 'Password updated successfully.')
+                messages.success(request, _('Password updated successfully.'))
                 return redirect('change_password')
             else:
-                messages.error(request, 'Please enter valid current password.')
+                messages.error(request, _('Please enter valid current password.'))
                 return redirect('change_password')
         else:
-            messages.error(request, 'Please does not match.')
+            messages.error(request, _('Please does not match.'))
             return redirect('change_password')
         
     return render(request, 'accounts/change_password.html')

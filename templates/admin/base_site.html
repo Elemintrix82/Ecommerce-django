@@ -1,0 +1,69 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}MSonline{% endblock %}
+
+{% block extrahead %}
+  <style>
+    /* Modifier la couleur de fond de l'en-tête 
+    #header {
+        background-color: #f0f0f0;
+    }*/
+    /* Modifier la couleur du texte à l'intérieur de l'en-tête */
+    
+    #branding h1, #user-tools a {
+      /*font-weight: bold;*/    /* Mettre le texte en gras */
+      color: white;         /* Définir la couleur du texte en blanc */
+      text-align: left;     /* Centrer le texte à gauche */
+    }
+  </style>
+    <link href="{% static 'images/icon.png' %}" rel="shortcut icon" type="image/x-icon">
+{% endblock %}
+
+{% block branding %}
+<div id="site-branding">
+    <div class="col-lg-2 col-md-3 col-6">
+        <a href="{% url 'admin:index' %}" class="brand-wrap">
+            <img class="logo" src="{% static './images/logo_admin.png' %}">
+        </a> <!-- brand-wrap.// -->
+    </div>
+    <h1 id="site-name">{% translate "Welcome to the MSonline administrator interface" %}</h1>
+</div>
+{% endblock %}
+
+
+
+{% comment %} {% block nav-global %}
+<div id="nav-global"> <br>
+    <ul class="group">
+        <li><a href="{% url 'admin:index' %}">Accueil</a></li>
+        <li><a href="{% url 'home' %}">Applications</a></li>
+        <li><a href="{% url 'admin:logout' %}">Déconnexion</a></li>
+    </ul>
+</div>
+{% endblock %} {% endcomment %}
+
+{% block content %}
+<div id="content" class="flex-grow-1">
+  <div class="container-fluid">
+    <h1>{% translate 'Administration website' %}</h1>
+    {% if app_list %}
+      <ul>
+        {% for app in app_list %}
+          <li>
+            <h2>{{ app.name }}</h2>
+            <ul>
+              {% for model in app.models %}
+                <li><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>{% translate "You don't have permission to view any apps" %}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.urls import include, path
 from . import views
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('store/', include('store.urls')),
@@ -31,4 +33,11 @@ urlpatterns = [
     # ORDERS
     path('orders/', include('orders.urls')),
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = _("MSonline administration")
+admin.site.site_title = _("MSonline administration")
+admin.site.index_title = _("MSonline Dashboard")
+admin.site.index_template = 'admin/base_site.html'
+

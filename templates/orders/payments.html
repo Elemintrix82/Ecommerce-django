@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -8,11 +9,11 @@
     
     <!-- ============================ COMPONENT 1 ================================= -->
 
-    <h4 class="text-center mb-10">Review Your Order and Make payment</h4>
+    <h4 class="text-center mb-10">{% translate "Review Your Order and Make payment" %}</h4>
     <div class="row">
         <aside class="col-lg-8">
             <div class="card">
-                <h5 class="card-header">Billing Address</h5>
+                <h5 class="card-header">{% translate "Billing Address" %}</h5>
                 <div class="card-body">
                   <p class="card-text mb-0">{{order.full_name}}</p>
                   <p class="card-text mb-0">{{order.full_address}}</p>
@@ -20,25 +21,25 @@
                   <p class="card-text mb-0">{{order.country}}</p>
                   <p class="card-text mb-0">{{order.email}}</p>
                   {% if order.order_note %}
-                    <b> Order Note:  </b> {{order.order_note}}
+                    <b> {% translate "Order Note" %}:  </b> {{order.order_note}}
                   {% endif %}
                 </div>
               </div>
               <div class="card">
-                <h5 class="card-header">payment Method</h5>
+                <h5 class="card-header">{% translate "payment Method" %}</h5>
                 <div class="card-body">
-                  <p class="card-text">PayPal</p>
+                  <p class="card-text">{% translate "PayPal" %}</p>
                 </div>
               </div>
               <div class="card">
-                <h5 class="card-header">Review Product</h5>
+                <h5 class="card-header">{% translate "Review Product" %}</h5>
                 <div class="card-body">
                     <table class="table table-borderless table-shopping-cart">
                         <thead class="text-muted">
                         <tr class="small text-uppercase">
-                          <th scope="col">Product</th>
-                          <th scope="col" width="120">Quantity</th>
-                          <th scope="col" width="120">Price</th>0
+                          <th scope="col">{% translate "Product" %}</th>
+                          <th scope="col" width="120">{% translate "Quantity" %}</th>
+                          <th scope="col" width="120">{% translate "Price" %}</th>0
                           
                         </tr>
                         </thead>
@@ -68,7 +69,7 @@
                             <td> 
                                 <div class="price-wrap"> 
                                     <var class="price">{{ cart_item.sub_total }} FCFA</var> 
-                                    <small class="text-muted"> {{ cart_item.product.price }} FCFA each </small> 
+                                    <small class="text-muted"> {{ cart_item.product.price }} FCFA {% translate "each" %} </small> 
                                 </div> <!-- price-wrap .// -->
                             </td>
                             
@@ -102,11 +103,13 @@
                     <img src="{% static './images/misc/payments.png' %}" height="26">
                 </p>
                 
-                
                 <div id="paypal-button-container">
                     <!-- Paypal Button will Load -->
-
                 </div>
+
+                {% comment %} <button id="orange-money-button">{% translate "Pay with Orange Money" %}</button>
+                <button id="mtn-money-button">{% translate "Pay with MTN Money" %}</button> {% endcomment %}
+                
             </div> <!-- card-body.// -->
             </div> <!-- card.// -->
     
@@ -119,89 +122,168 @@
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
-<script>
+{% language 'en' %}
+{% autoescape off %}
+    <script>
 
-    function getCookie(name){
-        let cookieValue = null;
-        if (document.cookie && document.cookie != ''){
-            const cookies = document.cookie.split(";");
-            for (let i = 0; i < cookies.length; i++){
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')){
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+        function getCookie(name){
+            let cookieValue = null;
+            if (document.cookie && document.cookie != ''){
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++){
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')){
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
                 }
             }
+            return cookieValue;
         }
-        return cookieValue;
-    }
 
-    var amount = "{{ grand_total }}"
-    var url = "{% url 'payments' %}"
-    var csrftoken = getCookie('csrftoken')
-    var orderID = "{{ order.order_number }}";
-    var payment_method = 'PayPal'
-    var redirect_url = "{% url 'order_complete' %}"
-    // Render the PayPal button into #paypal-button-container
-    paypal.Buttons({
+        var amount = "{{ grand_total }}"
+        var url = "{% url 'payments' %}"
+        var csrftoken = getCookie('csrftoken')
+        var orderID = "{{ order.order_number }}";
+        var payment_method = 'PayPal'
+        var redirect_url = "{% url 'order_complete' %}"
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
 
-        style: {
-            color:  'blue',
-            shape:  'rect',
-            label:  'pay',
-            height: 40
-        },
+            style: {
+                color:  'blue',
+                shape:  'rect',
+                label:  'pay',
+                height: 40
+            },
 
-        // Call your server to set up the transaction
-        createOrder: function(data, actions) {
-            return actions.order.create ({
-                purchase_units: [{
-                    amount: {
-                        value: amount,
-                    }
-                }]
-                
-            });
-            
-        },
-
-        // Call your server to finalize the transaction
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details){
-                console.log(details);
-                alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                sendData();
-                function sendData(){
-                    fetch(url, {
-                        method : "POST",
-                        headers : {
-                            "Content-type": "application/json",
-                            "X-CSRFToken": csrftoken,
-                        },
-                        body : JSON.stringify({
-                            orderID: orderID,
-                            transID : details.id,
-                            payment_method: payment_method,
-                            status : details.status,
-                        }),
-                    })
-                    .then((response) => {
-                        if (!response.ok) {
-                        throw new Error('Network response was not ok');
+            // Call your server to set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create ({
+                    purchase_units: [{
+                        amount: {
+                            value: amount,
                         }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        // Process the data returned from the server
-                        console.log('Success: ', data);
-                        console.log('Transaction completed.');
-                        window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
-                    })
+                    }]
+                    
+                });
+                
+            },
+
+            // Call your server to finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details){
+                    console.log(details);
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    sendData();
+                    function sendData(){
+                        fetch(url, {
+                            method : "POST",
+                            headers : {
+                                "Content-type": "application/json",
+                                "X-CSRFToken": csrftoken,
+                            },
+                            body : JSON.stringify({
+                                orderID: orderID,
+                                transID : details.id,
+                                payment_method: payment_method,
+                                status : details.status,
+                            }),
+                        })
+                        .then((response) => {
+                            if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            // Process the data returned from the server
+                            console.log('Success: ', data);
+                            console.log('Transaction completed.');
+                            window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
+                        })
+                    }
+                });
+            }
+
+        }).render('#paypal-button-container');
+    </script>
+    {% endautoescape %}
+    {% endlanguage %}
+
+{% comment %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Gérer le clic sur le bouton Orange Money
+        $('#orange-money-button').click(function() {
+            initializeOrangeMoneyPayment();
+        });
+
+        // Gérer le clic sur le bouton MTN Money
+        $('#mtn-money-button').click(function() {
+            initializeMtnMoneyPayment();
+        });
+
+        // Fonction pour initialiser le paiement Orange Money
+        function initializeOrangeMoneyPayment() {
+            var data = {
+                email: "customer@email.com",
+                currency: "XAF",
+                amount: "1000",
+                phone: "656019261",
+                reference: "your_unique_reference",
+                description: "Payment description"
+            };
+
+            $.ajax({
+                url: "https://api.notchpay.co/payments/initialize",
+                method: "POST",
+                headers: {
+                    "Authorization": "PUBLIC_KEY",
+                    "Accept": "application/json"
+                },
+                data: data,
+                success: function(response) {
+                    var paymentId = response.payment_id;
+                    // Rediriger vers la page de paiement Orange Money
+                    window.location.href = "https://api.notchpay.co/payments/" + paymentId;
+                },
+                error: function(error) {
+                    console.error("Erreur lors de l'initialisation du paiement Orange Money:", error);
                 }
             });
         }
 
-    }).render('#paypal-button-container');
-</script>
+        // Fonction pour initialiser le paiement MTN Money
+        function initializeMtnMoneyPayment() {
+            var data = {
+                email: "customer@email.com",
+                currency: "XAF",
+                amount: "1000",
+                phone: "656019261",
+                reference: "your_unique_reference",
+                description: "Payment description"
+            };
 
+            $.ajax({
+                url: "https://api.notchpay.co/payments/initialize",
+                method: "POST",
+                headers: {
+                    "Authorization": "PUBLIC_KEY",
+                    "Accept": "application/json"
+                },
+                data: data,
+                success: function(response) {
+                    var paymentId = response.payment_id;
+                    // Rediriger vers la page de paiement MTN Money
+                    window.location.href = "https://api.notchpay.co/payments/" + paymentId;
+                },
+                error: function(error) {
+                    console.error("Erreur lors de l'initialisation du paiement MTN Money:", error);
+                }
+            });
+        }
+    });
+</script> {% endcomment %}
 {% endblock  %}
